@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "LTwkumUSR6Jyt3D7XUzNCWZJRZ720Dd/YJSaSYlGQ1u85B/nkSOhQrrtbs1mfLIDPFsrSGZvnBxNZDJc36Zdig==",
+  "success": true,
+  "projectFilePath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512"
+  ],
+  "logs": []
+}

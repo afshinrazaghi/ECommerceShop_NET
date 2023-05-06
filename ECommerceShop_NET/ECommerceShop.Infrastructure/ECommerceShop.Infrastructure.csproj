@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="microsoft.entityframeworkcore" Version="7.0.5" />
+    <PackageReference Include="microsoft.entityframeworkcore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="microsoft.extensions.Configuration" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerceShop.Domain\ECommerceShop.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

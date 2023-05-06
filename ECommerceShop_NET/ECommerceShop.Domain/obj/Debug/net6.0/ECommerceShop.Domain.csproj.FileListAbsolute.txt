@@ -1,0 +1,12 @@
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.csproj.AssemblyReference.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.AssemblyInfoInputs.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.AssemblyInfo.cs
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.csproj.CoreCompileInputs.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\bin\Debug\net6.0\ECommerceShop.Domain.deps.json
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\bin\Debug\net6.0\ECommerceShop.Domain.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\bin\Debug\net6.0\ECommerceShop.Domain.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\refint\ECommerceShop.Domain.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ECommerceShop.Domain.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Domain\obj\Debug\net6.0\ref\ECommerceShop.Domain.dll

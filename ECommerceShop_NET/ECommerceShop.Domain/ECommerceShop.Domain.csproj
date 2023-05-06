@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="CartAggregate\Events\" />
+    <Folder Include="CategoryAggregate\Entities\" />
+    <Folder Include="CategoryAggregate\Events\" />
+    <Folder Include="OrderAggregate\Events\" />
+    <Folder Include="ProductAggregate\Entities\" />
+    <Folder Include="ProductAggregate\Events\" />
+    <Folder Include="UserAggregate\Entities\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
+  </ItemGroup>
+
 </Project>

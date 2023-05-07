@@ -1,0 +1,12 @@
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\bin\Debug\net6.0\ECommerceShop.Contracts.deps.json
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\bin\Debug\net6.0\ECommerceShop.Contracts.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\bin\Debug\net6.0\ECommerceShop.Contracts.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.csproj.AssemblyReference.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.AssemblyInfoInputs.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.AssemblyInfo.cs
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.csproj.CoreCompileInputs.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\refint\ECommerceShop.Contracts.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ECommerceShop.Contracts.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\Contracts\obj\Debug\net6.0\ref\ECommerceShop.Contracts.dll

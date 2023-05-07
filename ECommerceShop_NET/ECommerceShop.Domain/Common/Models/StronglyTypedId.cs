@@ -9,6 +9,8 @@ namespace ECommerceShop.Domain.Common.Models
     public abstract class StronglyTypedId<T> : ValueObject<StronglyTypedId<T>>
     {
         public T Value { get; }
+
+       
         public StronglyTypedId(T value)
         {
             if (value.Equals(Guid.Empty))

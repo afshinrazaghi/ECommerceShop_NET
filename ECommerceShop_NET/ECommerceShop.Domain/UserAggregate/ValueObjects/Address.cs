@@ -21,6 +21,8 @@ namespace ECommerceShop.Domain.UserAggregate.ValueObjects
             StreetAddress = address;
         }
 
+        private Address() { }   
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
            yield return StreetAddress;

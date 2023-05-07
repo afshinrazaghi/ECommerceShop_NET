@@ -10,11 +10,12 @@
     <Folder Include="CartAggregate\Events\" />
     <Folder Include="CategoryAggregate\Entities\" />
     <Folder Include="CategoryAggregate\Events\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="OrderAggregate\Events\" />
     <Folder Include="ProductAggregate\Entities\" />
     <Folder Include="ProductAggregate\Events\" />
     <Folder Include="UserAggregate\Entities\" />
+    <Folder Include="UserTokenAggregate\Entities\" />
+    <Folder Include="UserTokenAggregate\Events\" />
   </ItemGroup>
 
   <ItemGroup>

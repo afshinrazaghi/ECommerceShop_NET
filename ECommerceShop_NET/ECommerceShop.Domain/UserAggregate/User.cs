@@ -1,6 +1,5 @@
 ﻿using ECommerceShop.Domain.Common.Interfaces;
 using ECommerceShop.Domain.Common.Models;
-using ECommerceShop.Domain.UserAggregate.Entities;
 using ECommerceShop.Domain.UserAggregate.Events;
 using ECommerceShop.Domain.UserAggregate.ValueObjects;
 using ECommerceShop.Domain.UserTokenAggregate.ValueObjects;
@@ -30,16 +29,6 @@ namespace ECommerceShop.Domain.UserAggregate
         public static User Create(UserData userData)
         {
             return new User(userData);
-        }
-
-        public void AddUserToken(UserToken userToken)
-        {
-            _userTokens.Add(userToken);
-        }
-
-        public void RemoveUserToken(UserToken userToken)
-        {
-            _userTokens.Remove(userToken);
         }
 
         public void UpdateUserInformation(UserData userData)

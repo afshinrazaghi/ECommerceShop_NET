@@ -1,4 +1,5 @@
 ﻿using ECommerceShop.Domain.CategoryAggregate.ValueObjects;
+using ECommerceShop.Domain.Common.Interfaces;
 using ECommerceShop.Domain.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace ECommerceShop.Domain.CategoryAggregate
 {
     [Table("Category")]
-    public class Category : AggregateRoot<CategoryId>
+    public class Category : AggregateRoot<CategoryId>, IDomainBaseEntity
     {
         public string Name { get; private set; } = default!;
         public string? Description { get; private set; }
@@ -29,5 +30,7 @@ namespace ECommerceShop.Domain.CategoryAggregate
             Description = categoryData.Description;
             DateCreated = DateTime.UtcNow;
         }
+
+        private Category() { }
     }
 }

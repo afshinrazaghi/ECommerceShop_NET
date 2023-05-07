@@ -12,11 +12,16 @@ namespace ECommerceShop.Domain.OrderAggregate.Entities
 {
     public class OrderItem : Entity<OrderItemId>
     {
-        public OrderId OrderId { get; set; }
-        public ProductId ProductId { get; set; }
+        public ProductId ProductId { get; set; } = default!;
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime? ModifyAt { get; set; }
+
+        private OrderItem()
+        {
+            
+        }
+
     }
 }

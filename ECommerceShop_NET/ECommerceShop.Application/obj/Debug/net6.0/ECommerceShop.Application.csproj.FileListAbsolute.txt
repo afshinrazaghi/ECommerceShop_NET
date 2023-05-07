@@ -1,0 +1,15 @@
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Application.deps.json
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Application.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Application.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Domain.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Domain.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.csproj.AssemblyReference.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.AssemblyInfoInputs.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.AssemblyInfo.cs
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.csproj.CoreCompileInputs.cache
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.csproj.CopyComplete
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\refint\ECommerceShop.Application.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ref\ECommerceShop.Application.dll

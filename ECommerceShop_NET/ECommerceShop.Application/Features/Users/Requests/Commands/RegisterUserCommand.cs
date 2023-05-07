@@ -10,5 +10,5 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Application.Features.Users.Requests.Commands
 {
-    public record RegisterUserCommand(CreateUserDto CreateUserDto) : IRequest<BaseCommandResponse<UserDto>>;
+    public record RegisterUserCommand(CreateUserRequestDto CreateUserDto) : IRequest<BaseCommandResponse<UserDto>>;
 }

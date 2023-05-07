@@ -12,10 +12,13 @@ namespace ECommerceShop.Domain.Common.Models
     public abstract class AggregateRoot<TKey> : IAggregateRoot<TKey>
         where TKey : StronglyTypedId<Guid>
     {
+        protected AggregateRoot()
+        {
+            
+        }
         public TKey Id { get; set; } = default!;
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public Guid AggregateId
         {
             get => Id.Value;

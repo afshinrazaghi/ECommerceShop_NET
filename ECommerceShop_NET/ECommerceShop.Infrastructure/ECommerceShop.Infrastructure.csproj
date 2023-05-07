@@ -7,12 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="microsoft.entityframeworkcore" Version="7.0.5" />
+    <PackageReference Include="microsoft.entityframeworkcore.design" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="microsoft.entityframeworkcore.SqlServer" Version="7.0.5" />
     <PackageReference Include="microsoft.extensions.Configuration" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ECommerceShop.Application\ECommerceShop.Application.csproj" />
     <ProjectReference Include="..\ECommerceShop.Domain\ECommerceShop.Domain.csproj" />
   </ItemGroup>
 

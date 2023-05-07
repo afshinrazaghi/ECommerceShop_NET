@@ -9,6 +9,10 @@ namespace ECommerceShop.Domain.Common.Models
     public abstract class Entity<TKey> 
         where TKey: StronglyTypedId<Guid>
     {
+        protected Entity()
+        {
+            
+        }
         public TKey Id { get; set; } = default!;
         public override bool Equals(object? obj)
         {

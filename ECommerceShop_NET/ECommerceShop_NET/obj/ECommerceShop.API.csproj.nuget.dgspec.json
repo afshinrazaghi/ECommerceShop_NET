@@ -92,7 +92,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Domain\\ECommerceShop.Domain.csproj": {
+                "projectPath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Domain\\ECommerceShop.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -109,6 +113,10 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.5.2, )"
@@ -120,6 +128,10 @@
             "MediatR": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "microsoft.entityframeworkcore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
             }
           },
           "imports": [
@@ -237,6 +249,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Application\\ECommerceShop.Application.csproj": {
+                "projectPath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Application\\ECommerceShop.Application.csproj"
+              },
               "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Domain\\ECommerceShop.Domain.csproj": {
                 "projectPath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Domain\\ECommerceShop.Domain.csproj"
               }
@@ -253,11 +268,21 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
             "microsoft.entityframeworkcore": {
               "target": "Package",
               "version": "[7.0.5, )"
             },
             "microsoft.entityframeworkcore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "microsoft.entityframeworkcore.design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.5, )"
             },
@@ -352,6 +377,12 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.30.0, )"
+            },
+            "microsoft.entityframeworkcore.design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
             }
           },
           "imports": [

@@ -10,6 +10,7 @@
     <Folder Include="CartAggregate\Events\" />
     <Folder Include="CategoryAggregate\Entities\" />
     <Folder Include="CategoryAggregate\Events\" />
+    <Folder Include="NewFolder\" />
     <Folder Include="OrderAggregate\Events\" />
     <Folder Include="ProductAggregate\Entities\" />
     <Folder Include="ProductAggregate\Events\" />

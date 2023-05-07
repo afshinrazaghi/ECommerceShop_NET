@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ECommerceShop.API.Controllers.Common;
+using ECommerceShop.Application.DTOs.Users;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ namespace ECommerceShop.API.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register(CreateUserDto userDto)
+        public async Task<IActionResult> Register(CreateUserRequestDto userDto)
         {
 
         }

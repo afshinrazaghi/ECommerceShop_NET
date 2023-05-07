@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Application.DTOs.Users.Validators
 {
-    internal class CreateUserDtoValidator:AbstractValidator<CreateUserDto>
+    internal class CreateUserDtoValidator:AbstractValidator<CreateUserRequsetDto>
     {
         public CreateUserDtoValidator()
         {

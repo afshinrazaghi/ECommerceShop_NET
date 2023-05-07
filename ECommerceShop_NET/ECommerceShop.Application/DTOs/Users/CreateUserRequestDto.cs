@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Application.DTOs.Users
 {
-    public class CreateUserDto : BaseDto, IUserDto
+    public class CreateUserRequestDto : BaseDto, IUserDto
     {
-        public string UserName { get; set; } = default!;
         public string Email { get; set; } = default!;
         public string Password { get; set; } = default!;
     }

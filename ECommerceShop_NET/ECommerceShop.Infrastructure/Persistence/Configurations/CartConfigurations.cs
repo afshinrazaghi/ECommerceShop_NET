@@ -23,7 +23,10 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         private void ConfigureCartTable(EntityTypeBuilder<Cart> builder)
         {
             builder.ToTable("Cart");
-            builder.HasKey(c => c.Id);
+            builder.HasKey(c => c.AggregateId);
+
+            builder.Property(c => c.AggregateId)
+                .ValueGeneratedOnAdd();
 
             builder.Property(c => c.Id)
                 .ValueGeneratedNever()

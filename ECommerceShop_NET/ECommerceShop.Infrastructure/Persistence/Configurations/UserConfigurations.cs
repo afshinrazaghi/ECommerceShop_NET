@@ -23,7 +23,11 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("User");
 
-            builder.HasKey(t => t.Id);
+            builder.HasKey(t => t.AggregateId);
+
+            builder.Property(t => t.AggregateId)
+               .ValueGeneratedOnAdd();
+
 
             builder.Property(m => m.Id)
                 .ValueGeneratedNever()

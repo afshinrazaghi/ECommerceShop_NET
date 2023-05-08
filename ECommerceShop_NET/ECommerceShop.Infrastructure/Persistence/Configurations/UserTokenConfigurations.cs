@@ -22,7 +22,11 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("UserToken");
 
-            builder.HasKey(ut => ut.Id);
+            builder.HasKey(ut => ut.AggregateId);
+
+            builder.Property(ut => ut.AggregateId)
+               .ValueGeneratedOnAdd();
+
 
             builder.Property(ut => ut.UserId)
                .ValueGeneratedNever()

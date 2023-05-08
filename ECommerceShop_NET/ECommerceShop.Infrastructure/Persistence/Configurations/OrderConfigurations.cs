@@ -25,7 +25,10 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("Order");
 
-            builder.HasKey(o => o.Id);
+            builder.HasKey(o => o.AggregateId);
+
+            builder.Property(o => o.AggregateId)
+               .ValueGeneratedOnAdd();
 
             builder.Property(o => o.TotalAmount).HasColumnType("decimal(18,2)");
 

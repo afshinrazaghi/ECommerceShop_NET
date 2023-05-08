@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ECommerceShopDbContext))]
-    [Migration("20230507214708_InitialCreate")]
+    [Migration("20230508004948_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,10 +27,8 @@ namespace ECommerceShop.Infrastructure.Migrations
 
             modelBuilder.Entity("ECommerceShop.Domain.CartAggregate.Cart", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AggregateId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateAt")
@@ -39,23 +37,24 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("Id")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("AggregateId");
 
                     b.ToTable("Cart", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.CategoryAggregate.Category", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AggregateId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateCreated")
@@ -67,25 +66,29 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("Id")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AggregateId");
 
                     b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.OrderAggregate.Order", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AggregateId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -103,17 +106,15 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("AggregateId");
 
                     b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.ProductAggregate.Product", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AggregateId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CategoryId")
@@ -124,6 +125,9 @@ namespace ECommerceShop.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -139,17 +143,15 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AggregateId");
 
                     b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.UserAggregate.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("AggregateId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateAt")
@@ -164,6 +166,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<Guid?>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
@@ -181,14 +186,15 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("AggregateId");
 
                     b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.UserTokenAggregate.UserToken", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("AggregateId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AccessToken")
@@ -198,11 +204,11 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<DateTime>("AccessTokenExpiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("AggregateId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RefreshToken")
                         .IsRequired()
@@ -214,7 +220,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("AggregateId");
 
                     b.ToTable("UserToken", (string)null);
                 });
@@ -293,19 +299,19 @@ namespace ECommerceShop.Infrastructure.Migrations
                 {
                     b.OwnsOne("ECommerceShop.Domain.UserAggregate.ValueObjects.Address", "ShippingAddress", b1 =>
                         {
-                            b1.Property<Guid>("UserId")
+                            b1.Property<Guid>("UserAggregateId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("StreetAddress")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.HasKey("UserId");
+                            b1.HasKey("UserAggregateId");
 
                             b1.ToTable("User");
 
                             b1.WithOwner()
-                                .HasForeignKey("UserId");
+                                .HasForeignKey("UserAggregateId");
                         });
 
                     b.OwnsMany("ECommerceShop.Domain.UserTokenAggregate.ValueObjects.UserTokenId", "UserTokenIds", b1 =>

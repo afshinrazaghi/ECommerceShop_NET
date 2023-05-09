@@ -13,3 +13,5 @@ D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Appl
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\refint\ECommerceShop.Application.dll
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ECommerceShop.Application.pdb
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\obj\Debug\net6.0\ref\ECommerceShop.Application.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Contracts.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Application\bin\Debug\net6.0\ECommerceShop.Contracts.pdb

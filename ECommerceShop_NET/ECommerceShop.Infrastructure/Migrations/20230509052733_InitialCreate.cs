@@ -15,7 +15,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "Cart",
                 columns: table => new
                 {
-                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newsequentialid()"),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -31,7 +31,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "Category",
                 columns: table => new
                 {
-                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newsequentialid()"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -47,7 +47,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newsequentialid()"),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -65,7 +65,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newsequentialid()"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SKU = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -84,13 +84,13 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newsequentialid()"),
                     Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     IsAdmin = table.Column<bool>(type: "bit", nullable: false),
-                    ShippingAddress_StreetAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShippingAddress_StreetAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -98,24 +98,6 @@ namespace ECommerceShop.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.AggregateId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserToken",
-                columns: table => new
-                {
-                    AggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AccessToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccessTokenExpiration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RefreshTokenExpiration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserToken", x => x.AggregateId);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,19 +145,22 @@ namespace ECommerceShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserTokenIds",
+                name: "UserTokens",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserTokenId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    AccessToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccessTokenExpiration = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RefreshTokenExpiration = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserTokenIds", x => x.Id);
+                    table.PrimaryKey("PK_UserTokens", x => new { x.UserId, x.Id });
                     table.ForeignKey(
-                        name: "FK_UserTokenIds_User_UserId",
+                        name: "FK_UserTokens_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "AggregateId",
@@ -191,11 +176,6 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "IX_OrderItem_OrderId",
                 table: "OrderItem",
                 column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserTokenIds_UserId",
-                table: "UserTokenIds",
-                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -214,10 +194,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "Product");
 
             migrationBuilder.DropTable(
-                name: "UserToken");
-
-            migrationBuilder.DropTable(
-                name: "UserTokenIds");
+                name: "UserTokens");
 
             migrationBuilder.DropTable(
                 name: "Cart");

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using ECommerceShop.Application.Common.Interfaces.Persistence;
 using ECommerceShop.Application.Common.Interfaces.Services;
 using ECommerceShop.Infrastructure.Services;
+using ECommerceShop.Infrastructure.Settings;
 
 namespace ECommerceShop.Infrastructure
 {
@@ -22,6 +23,14 @@ namespace ECommerceShop.Infrastructure
             builder.UseSqlServer(config.GetConnectionString("ECommerceConnectionString")));
             services.AddRepositories();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+
+            var jwtSettings = new JwtSettings();
+            config.Bind(JwtSettings.SectionName, jwtSettings);
+            services.AddSingleton(jwtSettings);
+
+
             return services;
         }
 

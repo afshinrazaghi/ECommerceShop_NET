@@ -12,13 +12,16 @@ namespace ECommerceShop.Domain.Common.Models
     public abstract class AggregateRoot<TKey> : IAggregateRoot<TKey>
         where TKey : StronglyTypedId<Guid>
     {
+        private readonly List<IDomainEvent> _domainEvents = new();
         protected AggregateRoot()
         {
             
         }
         public TKey Id { get; set; } = default!;
+        public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid AggregateId
         {
             get => Id.Value;
@@ -42,5 +45,7 @@ namespace ECommerceShop.Domain.Common.Models
 
         [JsonIgnore]
         private readonly Queue<IDomainEvent> _uncommittedEvents = new Queue<IDomainEvent>();
+
+      
     }
 }

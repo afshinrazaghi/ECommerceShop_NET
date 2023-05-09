@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using ECommerceShop.Application.Common.Interfaces.Services;
 using ECommerceShop.Application.DTOs.Users;
+using ECommerceShop.Application.Features.Users.Requests.Commands;
+using ECommerceShop.Contracts.Models.User.Requests;
+using ECommerceShop.Contracts.Models.User.Responses;
 using ECommerceShop.Domain.UserAggregate;
 using System;
 using System.Collections.Generic;
@@ -12,12 +15,13 @@ namespace ECommerceShop.Application.Profiles
 {
     public class UserMappingProfile : Profile
     {
-        private readonly IPasswordHasher _passwordHasher;
-        public UserMappingProfile(IPasswordHasher passwordHasher)
+        public UserMappingProfile()
         {
-            _passwordHasher = passwordHasher;
-            CreateMap<CreateUserRequestDto, User>()
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => _passwordHasher.HashPassword(src.Password)));
+            CreateMap<RegisterUserRequest, RegisterUserCommand>();
+
+            CreateMap<User, RegisterUserResponse>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.Value));
+
         }
     }
 }

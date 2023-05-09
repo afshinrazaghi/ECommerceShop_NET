@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ECommerceShopDbContext))]
-    [Migration("20230508004948_InitialCreate")]
+    [Migration("20230509052733_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -29,7 +29,8 @@ namespace ECommerceShop.Infrastructure.Migrations
                 {
                     b.Property<Guid>("AggregateId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
@@ -55,7 +56,8 @@ namespace ECommerceShop.Infrastructure.Migrations
                 {
                     b.Property<Guid>("AggregateId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -82,7 +84,8 @@ namespace ECommerceShop.Infrastructure.Migrations
                 {
                     b.Property<Guid>("AggregateId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
@@ -115,7 +118,8 @@ namespace ECommerceShop.Infrastructure.Migrations
                 {
                     b.Property<Guid>("AggregateId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
@@ -152,7 +156,8 @@ namespace ECommerceShop.Infrastructure.Migrations
                 {
                     b.Property<Guid>("AggregateId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
@@ -163,7 +168,6 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -174,7 +178,6 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -189,40 +192,6 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.HasKey("AggregateId");
 
                     b.ToTable("User", (string)null);
-                });
-
-            modelBuilder.Entity("ECommerceShop.Domain.UserTokenAggregate.UserToken", b =>
-                {
-                    b.Property<Guid>("AggregateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("AccessToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("AccessTokenExpiration")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("RefreshToken")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RefreshTokenExpiration")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("AggregateId");
-
-                    b.ToTable("UserToken", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.CartAggregate.Cart", b =>
@@ -300,6 +269,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.OwnsOne("ECommerceShop.Domain.UserAggregate.ValueObjects.Address", "ShippingAddress", b1 =>
                         {
                             b1.Property<Guid>("UserAggregateId")
+                                .ValueGeneratedOnAdd()
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("StreetAddress")
@@ -314,35 +284,42 @@ namespace ECommerceShop.Infrastructure.Migrations
                                 .HasForeignKey("UserAggregateId");
                         });
 
-                    b.OwnsMany("ECommerceShop.Domain.UserTokenAggregate.ValueObjects.UserTokenId", "UserTokenIds", b1 =>
+                    b.OwnsMany("ECommerceShop.Domain.UserAggregate.Entities.UserToken", "UserTokens", b1 =>
                         {
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int");
-
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
-
                             b1.Property<Guid>("UserId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<Guid>("Value")
-                                .HasColumnType("uniqueidentifier")
-                                .HasColumnName("UserTokenId");
+                            b1.Property<Guid>("Id")
+                                .HasColumnType("uniqueidentifier");
 
-                            b1.HasKey("Id");
+                            b1.Property<string>("AccessToken")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                            b1.HasIndex("UserId");
+                            b1.Property<DateTime>("AccessTokenExpiration")
+                                .HasColumnType("datetime2");
 
-                            b1.ToTable("UserTokenIds", (string)null);
+                            b1.Property<DateTime>("CreateAt")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<string>("RefreshToken")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<DateTime>("RefreshTokenExpiration")
+                                .HasColumnType("datetime2");
+
+                            b1.HasKey("UserId", "Id");
+
+                            b1.ToTable("UserTokens", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("UserId");
                         });
 
-                    b.Navigation("ShippingAddress")
-                        .IsRequired();
+                    b.Navigation("ShippingAddress");
 
-                    b.Navigation("UserTokenIds");
+                    b.Navigation("UserTokens");
                 });
 #pragma warning restore 612, 618
         }

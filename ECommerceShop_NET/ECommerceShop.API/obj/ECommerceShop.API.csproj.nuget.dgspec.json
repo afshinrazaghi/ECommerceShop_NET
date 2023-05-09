@@ -190,6 +190,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\Contracts\\ECommerceShop.Contracts.csproj": {
+                "projectPath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\Contracts\\ECommerceShop.Contracts.csproj"
+              },
               "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Domain\\ECommerceShop.Domain.csproj": {
                 "projectPath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.Domain\\ECommerceShop.Domain.csproj"
               }
@@ -384,6 +387,14 @@
               "version": "[7.0.5, )"
             },
             "microsoft.extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "microsoft.extensions.options": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "microsoft.extensions.options.configurationextensions": {
               "target": "Package",
               "version": "[7.0.0, )"
             }

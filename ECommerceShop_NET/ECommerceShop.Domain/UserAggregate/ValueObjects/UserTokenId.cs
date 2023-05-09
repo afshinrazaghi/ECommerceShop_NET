@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECommerceShop.Domain.UserTokenAggregate.ValueObjects
+namespace ECommerceShop.Domain.UserAggregate.ValueObjects
 {
     public class UserTokenId : StronglyTypedId<Guid>
     {

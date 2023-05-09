@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Domain.Common.Models
 {
-    public interface IDomainEvent:INotification
+    public interface IDomainEvent : INotification
     {
     }
 }

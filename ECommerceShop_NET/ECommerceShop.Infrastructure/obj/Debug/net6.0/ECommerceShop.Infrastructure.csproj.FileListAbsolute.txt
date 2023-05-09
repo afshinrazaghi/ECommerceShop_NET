@@ -17,3 +17,5 @@ D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Infr
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Infrastructure\obj\Debug\net6.0\ECommerceShop.Infrastructure.pdb
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Infrastructure\obj\Debug\net6.0\ECommerceShop.Infrastructure.genruntimeconfig.cache
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Infrastructure\obj\Debug\net6.0\ref\ECommerceShop.Infrastructure.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Infrastructure\bin\Debug\net6.0\ECommerceShop.Contracts.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.Infrastructure\bin\Debug\net6.0\ECommerceShop.Contracts.pdb

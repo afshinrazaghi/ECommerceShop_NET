@@ -194,3 +194,5 @@ D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\obj\Debug\net6.0\ECommerceShop.API.pdb
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\obj\Debug\net6.0\ECommerceShop.API.genruntimeconfig.cache
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\obj\Debug\net6.0\ref\ECommerceShop.API.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll

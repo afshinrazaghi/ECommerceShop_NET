@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Persistence\Configurations\UserTokenConfigurations.cs" />
+    <Compile Remove="Persistence\UserTokenRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="microsoft.entityframeworkcore" Version="7.0.5" />
     <PackageReference Include="microsoft.entityframeworkcore.design" Version="7.0.5">
@@ -15,6 +20,8 @@
     </PackageReference>
     <PackageReference Include="microsoft.entityframeworkcore.SqlServer" Version="7.0.5" />
     <PackageReference Include="microsoft.extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="microsoft.extensions.options" Version="7.0.1" />
+    <PackageReference Include="microsoft.extensions.options.configurationextensions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

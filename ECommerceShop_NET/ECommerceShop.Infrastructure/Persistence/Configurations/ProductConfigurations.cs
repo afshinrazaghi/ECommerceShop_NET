@@ -25,7 +25,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
             builder.HasKey(b => b.AggregateId);
 
             builder.Property(b => b.AggregateId)
-               .ValueGeneratedOnAdd();
+               .ValueGeneratedOnAdd()
+               .HasDefaultValueSql("newsequentialid()"); ;
 
             builder.Property(b => b.CategoryId)
                 .ValueGeneratedNever()

@@ -26,8 +26,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
             builder.HasKey(t => t.AggregateId);
 
             builder.Property(t => t.AggregateId)
-               .ValueGeneratedOnAdd();
-
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("newsequentialid()");
 
             builder.Property(m => m.Id)
                 .ValueGeneratedNever()
@@ -42,20 +42,16 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
             builder.Property(x => x.Email).HasMaxLength(200);
             builder.Property(x => x.Password).HasMaxLength(100);
 
-            builder.OwnsMany(m => m.UserTokenIds, utb =>
+            builder.OwnsMany(m => m.UserTokens, utb =>
             {
-                utb.ToTable("UserTokenIds");
+                utb.ToTable("UserTokens");
                 utb.WithOwner().HasForeignKey("UserId");
-                utb.HasKey("Id");
-
-                utb.Property(d => d.Value)
-                .HasColumnName("UserTokenId")
-                .ValueGeneratedNever();
+                utb.Property(x => x.Id)
+                .ValueGeneratedNever()
+                .HasConversion(
+                    id => id.Value,
+                    value => UserTokenId.Create(value));
             });
-
-            builder.Metadata.FindNavigation(nameof(User.UserTokenIds))!.
-            SetPropertyAccessMode(PropertyAccessMode.Field);
-
 
         }
     }

@@ -28,7 +28,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
             builder.HasKey(o => o.AggregateId);
 
             builder.Property(o => o.AggregateId)
-               .ValueGeneratedOnAdd();
+               .ValueGeneratedOnAdd()
+               .HasDefaultValueSql("newsequentialid()"); ;
 
             builder.Property(o => o.TotalAmount).HasColumnType("decimal(18,2)");
 

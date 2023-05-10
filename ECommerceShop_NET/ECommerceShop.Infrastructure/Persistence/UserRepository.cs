@@ -1,5 +1,6 @@
 ﻿using ECommerceShop.Application.Common.Interfaces.Persistence;
 using ECommerceShop.Domain.UserAggregate;
+using ECommerceShop.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,11 @@ namespace ECommerceShop.Infrastructure.Persistence
         public async Task<User?> GetUser(string email)
         {
             return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+        }
+
+        public Task<User?> GetUser(UserId userId)
+        {
+            return _context.Users.Include(x => x.UserTokens).SingleOrDefaultAsync(u => u.Id == userId);
         }
 
         public async Task SaveChangesAsync()

@@ -24,8 +24,6 @@
     <Folder Include="Features\Template\Handlers\Queries\" />
     <Folder Include="Features\Template\Requests\Commands\" />
     <Folder Include="Features\Template\Requests\Queries\" />
-    <Folder Include="Features\Users\Handlers\Queries\" />
-    <Folder Include="Features\Users\Requests\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

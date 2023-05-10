@@ -17,18 +17,32 @@ namespace ECommerceShop.Domain.CategoryAggregate
         public string? Description { get; private set; }
         public DateTime DateCreated { get; private set; }
         public DateTime? DateModified { get; private set; }
+        public DateTime? DeleteAt { get; private set; }
 
-        public static Category Create(CategoryData categoryData)
+        public static Category Create(string name, string? description)
         {
-            return new Category(categoryData);
+            return new Category(name, description);
         }
 
-        private Category(CategoryData categoryData)
+        public Category UpdateCategory(string name, string? description)
+        {
+            Name = name;
+            Description = description;
+            return this;
+        }
+
+        private Category(string name, string? description)
         {
             Id = CategoryId.Create(Guid.NewGuid());
-            Name = categoryData.Name;
-            Description = categoryData.Description;
+            Name = name;
+            Description = description;
             DateCreated = DateTime.UtcNow;
+        }
+
+        public Category DeleteCategory(DateTime deleteAt)
+        {
+            DeleteAt = deleteAt;
+            return this;
         }
 
         private Category() { }

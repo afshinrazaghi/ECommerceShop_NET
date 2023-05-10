@@ -20,7 +20,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true, defaultValueSql: "newsequentialid()")
                 },
                 constraints: table =>
                 {
@@ -36,7 +36,8 @@ namespace ECommerceShop.Infrastructure.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeleteAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true, defaultValueSql: "newsequentialid()")
                 },
                 constraints: table =>
                 {
@@ -54,7 +55,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true, defaultValueSql: "newsequentialid()")
                 },
                 constraints: table =>
                 {
@@ -73,7 +74,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                     CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true, defaultValueSql: "newsequentialid()")
                 },
                 constraints: table =>
                 {
@@ -93,7 +94,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                     ShippingAddress_StreetAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifyAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true, defaultValueSql: "newsequentialid()")
                 },
                 constraints: table =>
                 {
@@ -148,7 +149,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                 name: "UserTokens",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "newsequentialid()"),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AccessToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),

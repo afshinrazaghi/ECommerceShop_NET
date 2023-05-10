@@ -3,6 +3,7 @@ using ECommerceShop.API.Attributes;
 using ECommerceShop.API.Controllers.Common;
 using ECommerceShop.Application.DTOs.Users;
 using ECommerceShop.Application.Features.Users.Requests.Commands;
+using ECommerceShop.Application.Features.Users.Requests.Queries;
 using ECommerceShop.Contracts.Models.User.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -36,9 +37,12 @@ namespace ECommerceShop.API.Controllers
         [Route("logout")]
         [Authorize]
         [ECommerceShopAuthorize]
-        public async Task<ActionResult> Logout()
+        public async Task<ActionResult> Logout(LogoutUserRequest request)
         {
-
+            Guid userId = Guid.Parse(GetTokenInfo()["sub"]);
+            var command = new LogoutUserCommand() { UserId = userId };
+            var res = await _sender.Send(command);
+            return Ok(SuccessfullResult(res));
         }
 
         [HttpPost]
@@ -48,6 +52,33 @@ namespace ECommerceShop.API.Controllers
             var command = _mapper.Map<LoginCommand>(request);
             var res = await _sender.Send(command);
             return Ok(SuccessfullMessage(res));
+        }
+
+        [HttpGet]
+        [Route("getUsers")]
+        public async Task<IActionResult> GetUsers([FromQuery] GetUserRequest request)
+        {
+            var query = _mapper.Map<GetUsersQuery>(request);
+            var res = await _sender.Send(query);
+            return Ok(SuccessfullResult(res));
+        }
+
+        [HttpGet]
+        [Route("getUserById")]
+        public async Task<IActionResult> GetUserById([FromQuery] GetUserByIdRequest request)
+        {
+            var query = _mapper.Map<GetUserByIdQuery>(request);
+            var res = await _sender.Send(query);
+            return Ok(SuccessfullResult(res));
+        }
+
+        [HttpPost]
+        [Route("updateUser")]
+        public async Task<IActionResult> UpdateUser(UpdateUserRequest request)
+        {
+            var command = _mapper.Map<UpdateUserCommand>(request);
+            var res = await _sender.Send(command);
+            return Ok(SuccessfullResult(res));
         }
 
     }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8Here00ntB1I3WfrtMT5vnVTA7uFy6pdRycIOL/gDFp4UdWsVY8pilAP++wdgb648UXc/2JsoMNaGyGSdlIyPg==",
+  "dgSpecHash": "5OJU/O6QHQWnmMnTUz8beCb6pW5jPOlE5kMr+f7WtVLzc25ltNW2+hqVAGo4VdHXIhrdduxPJlLw8+az5y41GQ==",
   "success": true,
   "projectFilePath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.API\\ECommerceShop.API.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Afshin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

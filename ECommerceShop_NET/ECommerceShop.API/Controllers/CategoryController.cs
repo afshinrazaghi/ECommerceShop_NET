@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECommerceShop.API.Attributes;
 using ECommerceShop.API.Controllers.Common;
 using ECommerceShop.Application.Features.Categories.Requests.Commands;
 using ECommerceShop.Application.Features.Categories.Requests.Queries;
@@ -32,6 +33,7 @@ namespace ECommerceShop.API.Controllers
 
         [HttpPost]
         [Route("updateCategory")]
+        [ECommerceShopAuthorizeAdmin]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryRequest request)
         {
             var command = _mapper.Map<UpdateCategoryCommand>(request);
@@ -41,6 +43,7 @@ namespace ECommerceShop.API.Controllers
 
         [HttpPost]
         [Route("createCategory")]
+        [ECommerceShopAuthorizeAdmin]
         public async Task<IActionResult> CreateCategory(CreateCategoryRequest request)
         {
             var command = _mapper.Map<CreateCategoryCommand>(request);
@@ -50,6 +53,7 @@ namespace ECommerceShop.API.Controllers
 
         [HttpPost]
         [Route("DeleteCategory")]
+        [ECommerceShopAuthorizeAdmin]
         public async Task<IActionResult> DeleteCategory(DeleteCategoryRequest request)
         {
             var command = _mapper.Map<DeleteCategoryCommand>(request);

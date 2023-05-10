@@ -15,5 +15,8 @@ namespace ECommerceShop.Application
             services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(ApplicationServicesRegistration).Assembly));
             return services;
         }   
+
+
+        
     }
 }

@@ -26,6 +26,17 @@ namespace ECommerceShop.Infrastructure.Persistence
             return user;
         }
 
+        public async Task ClearUserTokens(UserId userId)
+        {
+            var user = await _context.Users.Include(x => x.UserTokens).SingleOrDefaultAsync(u => u.Id == userId);
+            if (user != null)
+            {
+                user.ClearUserTokens();
+                await _context.SaveChangesAsync();
+            }
+
+        }
+
         public async Task<bool> EmailExist(string email)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
@@ -37,14 +48,39 @@ namespace ECommerceShop.Infrastructure.Persistence
             return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
 
-        public Task<User?> GetUser(UserId userId)
+        public async Task<User?> GetUser(UserId userId)
         {
-            return _context.Users.Include(x => x.UserTokens).SingleOrDefaultAsync(u => u.Id == userId);
+            return await _context.Users.Include(x => x.UserTokens).SingleOrDefaultAsync(u => u.Id == userId);
+        }
+
+        public IQueryable<User> GetUsers(string? searchParam)
+        {
+            return _context.Users.Where(u =>
+            string.IsNullOrEmpty(searchParam) ||
+            (!string.IsNullOrEmpty(u.FirstName) && u.FirstName.Contains(searchParam)) ||
+            (!string.IsNullOrEmpty(u.LastName) && u.LastName.Contains(searchParam)) ||
+            u.Email.Contains(searchParam)).OrderBy(u => u.CreateAt);
         }
 
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User?> UpdateUser(UserId userId, string firstName, string lastName, string password)
+        {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == userId);
+            if (user != null)
+            {
+                user.UpdateUser(firstName, lastName, password);
+                await _context.SaveChangesAsync();
+                return user;
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

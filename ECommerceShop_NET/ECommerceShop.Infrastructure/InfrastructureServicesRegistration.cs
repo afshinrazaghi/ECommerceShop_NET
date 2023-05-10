@@ -13,6 +13,8 @@ using ECommerceShop.Application.Common.Interfaces.Services;
 using ECommerceShop.Infrastructure.Services;
 using ECommerceShop.Infrastructure.Settings;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ECommerceShop.Infrastructure
 {
@@ -25,12 +27,7 @@ namespace ECommerceShop.Infrastructure
             services.AddRepositories();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-
-
-            var jwtSettings = new JwtSettings();
-            config.Bind(JwtSettings.SectionName, jwtSettings);
-            services.AddSingleton(Options.Create(jwtSettings));
-
+            services.AddAuth(config);
 
             return services;
         }
@@ -39,6 +36,32 @@ namespace ECommerceShop.Infrastructure
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            return services;
+        }
+
+        public static IServiceCollection AddAuth(this IServiceCollection services, ConfigurationManager config)
+        {
+
+            var jwtSettings = new JwtSettings();
+            config.Bind(JwtSettings.SectionName, jwtSettings);
+            services.AddSingleton(Options.Create(jwtSettings));
+
+            services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = jwtSettings.Issuer,
+                        ValidAudience = jwtSettings.Audience,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                    };
+                });
+
             return services;
         }
     }

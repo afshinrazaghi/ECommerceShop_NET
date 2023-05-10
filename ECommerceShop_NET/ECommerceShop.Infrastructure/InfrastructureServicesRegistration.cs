@@ -12,6 +12,7 @@ using ECommerceShop.Application.Common.Interfaces.Persistence;
 using ECommerceShop.Application.Common.Interfaces.Services;
 using ECommerceShop.Infrastructure.Services;
 using ECommerceShop.Infrastructure.Settings;
+using Microsoft.Extensions.Options;
 
 namespace ECommerceShop.Infrastructure
 {
@@ -28,7 +29,7 @@ namespace ECommerceShop.Infrastructure
 
             var jwtSettings = new JwtSettings();
             config.Bind(JwtSettings.SectionName, jwtSettings);
-            services.AddSingleton(jwtSettings);
+            services.AddSingleton(Options.Create(jwtSettings));
 
 
             return services;

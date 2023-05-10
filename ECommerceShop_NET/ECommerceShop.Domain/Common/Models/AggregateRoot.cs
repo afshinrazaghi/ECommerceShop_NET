@@ -24,8 +24,7 @@ namespace ECommerceShop.Domain.Common.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid AggregateId
         {
-            get => Id.Value;
-            set { }
+            get;set;
         }
 
         public void ClearUncommittedEvents()

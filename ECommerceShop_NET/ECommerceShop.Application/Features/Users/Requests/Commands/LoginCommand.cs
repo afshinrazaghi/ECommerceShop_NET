@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Application.Features.Users.Requests.Commands
 {
-    public class LoginCommand : IRequest<BaseCommandResponse<LoginResponse>>
+    public class LoginCommand : IRequest<BaseCommandResponse<LoginUserResponse>>
     {
         public string Email { get; set; } = default!;
         public string Password { get; set; } = default!;

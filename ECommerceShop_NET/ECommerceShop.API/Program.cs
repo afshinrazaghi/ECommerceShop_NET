@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddControllers();
     builder.Services.ConfigureApplicationServices();
     builder.Services.ConfigureInfrastructureServices(builder.Configuration);
+    builder.Services.AddCors();
 }
 
 var app = builder.Build();
@@ -16,17 +17,17 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 {
     app.UseCors(options => options
-    .AllowAnyHeader()
-    .AllowAnyMethod()
-    .AllowCredentials()
-    .SetIsOriginAllowed(b => true));
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials()
+        .SetIsOriginAllowed(b => true));
 
     app.UseAuthentication();
     app.UseAuthorization();
 
     app.UseExceptionHandler("/error");
-
-    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    //app.UseHttpsRedirection();
 
     app.MapControllers();
 

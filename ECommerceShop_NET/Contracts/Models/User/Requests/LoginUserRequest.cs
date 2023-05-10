@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Contracts.Models.User.Requests
 {
-    public class LoginRequest
+    public class LoginUserRequest
     {
         public string Email { get; set; } = default!;
         public string Password { get; set; } = default!;

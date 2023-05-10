@@ -30,5 +30,14 @@ namespace ECommerceShop.API.Controllers
             return Ok(SuccessfullResult(res));
         }
 
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Login(LoginUserRequest request)
+        {
+            var command = _mapper.Map<LoginCommand>(request);
+            var res = await _sender.Send(command);
+            return Ok(SuccessfullMessage(res));
+        }
+
     }
 }

@@ -36,7 +36,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -66,7 +68,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -88,7 +92,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -128,7 +134,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -169,7 +177,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<Guid?>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
@@ -287,7 +297,9 @@ namespace ECommerceShop.Infrastructure.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<Guid>("Id")
-                                .HasColumnType("uniqueidentifier");
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("uniqueidentifier")
+                                .HasDefaultValueSql("newsequentialid()");
 
                             b1.Property<string>("AccessToken")
                                 .IsRequired()

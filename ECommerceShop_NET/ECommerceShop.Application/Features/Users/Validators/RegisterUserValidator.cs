@@ -1,4 +1,5 @@
-﻿using ECommerceShop.Application.Features.Users.Requests.Commands;
+﻿using ECommerceShop.Application.Common.Interfaces.Persistence;
+using ECommerceShop.Application.Features.Users.Requests.Commands;
 using ECommerceShop.Contracts.Models.User.Requests;
 using FluentValidation;
 using System;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Application.Features.Users.Validators
 {
-    public class RegisterUserValidator:AbstractValidator<RegisterUserCommand>
+    public class RegisterUserValidator : AbstractValidator<RegisterUserCommand>
     {
-        public RegisterUserValidator()
+        public RegisterUserValidator(IUserRepository userRepository)
         {
             RuleFor(x => x.Email)
                .NotNull().WithMessage("Email is mandatory")
@@ -19,7 +20,14 @@ namespace ECommerceShop.Application.Features.Users.Validators
 
             RuleFor(x => x.Password)
                 .NotNull().WithMessage("Password is mandatory")
-                .NotEmpty().WithMessage("Password is mandatory");
+                .NotEmpty().WithMessage("Password is mandatory")
+                .MinimumLength(6).WithMessage("Password must be more than 6 character");
+
+            RuleFor(x => x.Email)
+                .MustAsync(async (email, token) =>
+                {
+                    return !await userRepository.EmailExist(email);
+                }).WithMessage("Email already exists!");
         }
     }
 }

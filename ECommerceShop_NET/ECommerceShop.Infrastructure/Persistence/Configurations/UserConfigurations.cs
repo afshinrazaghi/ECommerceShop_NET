@@ -1,14 +1,7 @@
-﻿using AutoMapper.Configuration;
-using ECommerceShop.Domain.UserAggregate;
+﻿using ECommerceShop.Domain.UserAggregate;
 using ECommerceShop.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerceShop.Infrastructure.Persistence.Configurations
 {
@@ -30,7 +23,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
                 .HasDefaultValueSql("newsequentialid()");
 
             builder.Property(m => m.Id)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("newsequentialid()")
                 .HasConversion(
                     id => id.Value,
                     value => UserId.Create(value));
@@ -47,7 +41,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
                 utb.ToTable("UserTokens");
                 utb.WithOwner().HasForeignKey("UserId");
                 utb.Property(x => x.Id)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("newsequentialid()")
                 .HasConversion(
                     id => id.Value,
                     value => UserTokenId.Create(value));

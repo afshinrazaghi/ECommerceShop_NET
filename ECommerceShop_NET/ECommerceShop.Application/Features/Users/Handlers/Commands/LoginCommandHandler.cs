@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Application.Features.Users.Handlers.Commands
 {
-    public class LoginCommandHandler : IRequestHandler<LoginCommand, BaseCommandResponse<LoginResponse>>
+    public class LoginCommandHandler : IRequestHandler<LoginCommand, BaseCommandResponse<LoginUserResponse>>
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
@@ -29,13 +29,13 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
             _mapper = mapper;
         }
 
-        public async Task<BaseCommandResponse<LoginResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse<LoginUserResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var response = new BaseCommandResponse<LoginResponse>();
+            var response = new BaseCommandResponse<LoginUserResponse>();
             var user = await _userRepository.GetUser(request.Email);
             if (user != null)
             {
-                if (user.Password == _passwordHasher.HashPassword(request.Password))
+                if (_passwordHasher.VerifyPassword(request.Password, user.Password))
                 {
                     var tokenInfo = _jwtTokenGenerator.GenerateToken(user);
                     var refreshToken = Guid.NewGuid().ToString();
@@ -47,9 +47,12 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
 
                     await _userRepository.SaveChangesAsync();
 
-                    var userInfo = _mapper.Map<LoginResponse>(user);
+                    var userInfo = _mapper.Map<LoginUserResponse>(user);
                     userInfo.AccessToken = tokenInfo.AccessToken;
+                    userInfo.RefreshToken = refreshToken;
                     response.Item = userInfo;
+                    response.Success = true;
+                    response.Message = "User logged in successfully!";
                 }
                 else
                 {

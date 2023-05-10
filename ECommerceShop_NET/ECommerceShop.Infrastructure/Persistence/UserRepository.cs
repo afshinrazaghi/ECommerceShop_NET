@@ -25,6 +25,12 @@ namespace ECommerceShop.Infrastructure.Persistence
             return user;
         }
 
+        public async Task<bool> EmailExist(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            return user != null;
+        }
+
         public async Task<User?> GetUser(string email)
         {
             return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);

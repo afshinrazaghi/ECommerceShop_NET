@@ -20,7 +20,11 @@ namespace ECommerceShop.Application.Profiles
             CreateMap<RegisterUserRequest, RegisterUserCommand>();
 
             CreateMap<User, RegisterUserResponse>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.Value));
+                .ForMember(destination => destination.Id, opt => opt.MapFrom(src => src.Id.Value));
+
+            CreateMap<LoginUserRequest, LoginCommand>();
+            CreateMap<User, LoginUserResponse>()
+                .ForMember(destination => destination.Id, opt => opt.MapFrom(src => src.Id.Value));
 
         }
     }

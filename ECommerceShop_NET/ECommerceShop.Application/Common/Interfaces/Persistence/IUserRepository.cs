@@ -11,7 +11,7 @@ namespace ECommerceShop.Application.Common.Interfaces.Persistence
     {
         public Task<User> AddUser(User user);
         public Task<User?> GetUser(string email);
-
+        public  Task<bool> EmailExist(string email);
         public Task SaveChangesAsync();
 
 

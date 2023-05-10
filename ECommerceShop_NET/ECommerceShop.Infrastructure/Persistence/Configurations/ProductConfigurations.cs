@@ -35,7 +35,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
                     value => CategoryId.Create(value));
 
             builder.Property(b => b.Id)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
+                .HasDefaultValueSql("newsequentialid()")
                 .HasConversion(
                     id => id.Value,
                     value => ProductId.Create(value));

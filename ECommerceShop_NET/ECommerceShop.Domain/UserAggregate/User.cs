@@ -46,7 +46,7 @@ namespace ECommerceShop.Domain.UserAggregate
 
         public void AddUserToken(UserToken userToken)
         {
-            if (_userTokens.Any(ut => ut != userToken))
+            if (_userTokens.All(ut => ut != userToken))
                 _userTokens.Add(userToken);
         }
 

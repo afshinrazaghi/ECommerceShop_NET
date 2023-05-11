@@ -31,6 +31,7 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Queries
             int count = await users.CountAsync();
             var res = await _mapper.ProjectTo<UserResponse>(users.Skip(request.Skip).Take(request.Take)).ToListAsync();
             response.Success = true;
+            response.Count = count;
             response.Items = res;
             return response;
         }

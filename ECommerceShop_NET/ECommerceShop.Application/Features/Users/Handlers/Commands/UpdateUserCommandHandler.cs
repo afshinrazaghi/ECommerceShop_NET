@@ -34,10 +34,11 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (validationResult.IsValid)
             {
-                var res = await _userRepository.UpdateUser(UserId.Create(request.Id), request.FirstName, request.LastName, _passwordHasher.HashPassword(request.Password));
+                var res = await _userRepository.UpdateUser(UserId.Create(request.Id), request.FirstName, request.LastName, !string.IsNullOrEmpty(request.Password) ? _passwordHasher.HashPassword(request.Password) : null);
                 if (res != null)
                 {
                     response.Success = true;
+                    response.Message = "User updated successfully!";
                     response.Item = _mapper.Map<UserResponse>(res);
                 }
                 else

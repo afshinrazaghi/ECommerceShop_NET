@@ -17,7 +17,7 @@ namespace ECommerceShop.Application.Common.Interfaces.Persistence
         public Task SaveChangesAsync();
         public Task ClearUserTokens(UserId userId);
         public IQueryable<User> GetUsers(string? searchParam);
-        public Task<User?> UpdateUser(UserId userId, string firstName, string lastName, string password);
+        public Task<User?> UpdateUser(UserId userId, string firstName, string lastName, string? password);
 
 
     }

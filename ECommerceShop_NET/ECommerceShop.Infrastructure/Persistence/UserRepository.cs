@@ -67,12 +67,12 @@ namespace ECommerceShop.Infrastructure.Persistence
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User?> UpdateUser(UserId userId, string firstName, string lastName, string password)
+        public async Task<User?> UpdateUser(UserId userId, string firstName, string lastName, string? password)
         {
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == userId);
             if (user != null)
             {
-                user.UpdateUser(firstName, lastName, password);
+                user.UpdateUser(firstName, lastName, null, password);
                 await _context.SaveChangesAsync();
                 return user;
             }

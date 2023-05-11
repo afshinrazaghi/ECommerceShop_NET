@@ -21,9 +21,8 @@ namespace ECommerceShop.Application.Features.Users.Validators
                 .NotEmpty().WithMessage("Last Name is mandatory");
 
             RuleFor(u => u.Password)
-                .NotNull().WithMessage("Password is mandatory")
-                .NotEmpty().WithMessage("Password is mandatory")
-                .MinimumLength(6).WithMessage("Password must be at least 6 characters");
+                .MinimumLength(6).WithMessage("Password must be at least 6 characters")
+                .When(u => !string.IsNullOrEmpty(u.Password));
         }
     }
 }

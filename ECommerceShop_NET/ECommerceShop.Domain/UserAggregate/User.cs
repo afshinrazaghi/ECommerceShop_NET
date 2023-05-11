@@ -31,12 +31,16 @@ namespace ECommerceShop.Domain.UserAggregate
             return new User(email, password);
         }
 
-        public void UpdateUser(string? firstName, string? lastName, string? shippingAddress)
+        public void UpdateUser(string? firstName, string? lastName, string? shippingAddress, string? password)
         {
             FirstName = firstName;
             LastName = lastName;
+
             if (!string.IsNullOrWhiteSpace(shippingAddress))
                 ShippingAddress = Address.Create(shippingAddress);
+
+            if (!string.IsNullOrWhiteSpace(password))
+                Password = password;
         }
 
         public void ClearUserTokens()

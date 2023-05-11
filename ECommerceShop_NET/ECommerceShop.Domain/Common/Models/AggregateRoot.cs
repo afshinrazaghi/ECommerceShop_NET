@@ -20,12 +20,12 @@ namespace ECommerceShop.Domain.Common.Models
         public TKey Id { get; set; } = default!;
         public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid AggregateId
-        {
-            get;set;
-        }
+        //[Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public Guid AggregateId
+        //{
+        //    get;set;
+        //}
 
         public void ClearUncommittedEvents()
         {

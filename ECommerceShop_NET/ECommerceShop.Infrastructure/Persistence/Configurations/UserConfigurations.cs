@@ -16,11 +16,11 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("User");
 
-            builder.HasKey(t => t.AggregateId);
+            builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.AggregateId)
-                .ValueGeneratedOnAdd()
-                .HasDefaultValueSql("newsequentialid()");
+            //builder.Property(t => t.AggregateId)
+            //    .ValueGeneratedOnAdd()
+            //    .HasDefaultValueSql("newsequentialid()");
 
             builder.Property(m => m.Id)
                 .ValueGeneratedOnAdd()
@@ -47,6 +47,8 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
                     id => id.Value,
                     value => UserTokenId.Create(value));
             });
+
+            //builder.HasData(User.Create(Guid.NewGuid(), "login@test.com", "$2a$10$d.elewc4L65Ja/urk5Gp7.HbGlA84o3tH0.C6SX4O7Jq63sWoG3k2", true));
 
         }
     }

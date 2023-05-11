@@ -26,9 +26,15 @@ namespace ECommerceShop.Domain.UserAggregate
         #endregion
 
         #region Public Methods
-        public static User Create(string email, string password)
+
+        public static User Create(Guid id, string email, string password, bool isAdmin)
         {
-            return new User(email, password);
+            return new User(id, email, password, isAdmin);
+
+        }
+        public static User Create(string email, string password, bool isAdmin)
+        {
+            return new User(email, password, isAdmin);
         }
 
         public void UpdateUser(string? firstName, string? lastName, string? shippingAddress, string? password)
@@ -67,12 +73,19 @@ namespace ECommerceShop.Domain.UserAggregate
         #endregion
 
         #region Constructor
-        private User(string email, string password)
+
+        private User(string email, string password, bool isAdmin)
         {
             Email = email;
             Password = password;
-            IsAdmin = false;
+            IsAdmin = isAdmin;
             CreateAt = DateTime.UtcNow;
+        }
+
+        private User(Guid id, string email, string password, bool isAdmin)
+            : this(email, password, isAdmin)
+        {
+            Id = UserId.Create(id);
         }
 
         private User() { }

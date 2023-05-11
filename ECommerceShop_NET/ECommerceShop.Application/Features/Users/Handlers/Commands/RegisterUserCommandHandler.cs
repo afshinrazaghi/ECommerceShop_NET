@@ -36,7 +36,7 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
             var validationResult = await validator.ValidateAsync(request);
             if (validationResult.IsValid)
             {
-                var user = User.Create(request.Email, _passwordHasher.HashPassword(request.Password));
+                var user = User.Create(request.Email, _passwordHasher.HashPassword(request.Password), false);
                 var newUser = await _userRepository.AddUser(user);
 
                 response.Success = true;

@@ -22,11 +22,11 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("Product");
 
-            builder.HasKey(b => b.AggregateId);
+            builder.HasKey(b => b.Id);
 
-            builder.Property(b => b.AggregateId)
-               .ValueGeneratedOnAdd()
-               .HasDefaultValueSql("newsequentialid()"); ;
+            //builder.Property(b => b.AggregateId)
+            //   .ValueGeneratedOnAdd()
+            //   .HasDefaultValueSql("newsequentialid()"); ;
 
             builder.Property(b => b.CategoryId)
                 .ValueGeneratedNever()

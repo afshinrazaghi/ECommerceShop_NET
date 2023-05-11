@@ -25,6 +25,8 @@ var app = builder.Build();
     app.UseAuthentication();
     app.UseAuthorization();
 
+    app.InfrastructureConfiguration();
+
     app.UseExceptionHandler("/error");
     app.UseStaticFiles();
     //app.UseHttpsRedirection();

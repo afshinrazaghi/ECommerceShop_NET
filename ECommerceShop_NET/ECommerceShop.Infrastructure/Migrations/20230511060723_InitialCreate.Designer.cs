@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ECommerceShopDbContext))]
-    [Migration("20230510114718_InitialCreate")]
+    [Migration("20230511060723_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,7 +27,7 @@ namespace ECommerceShop.Infrastructure.Migrations
 
             modelBuilder.Entity("ECommerceShop.Domain.CartAggregate.Cart", b =>
                 {
-                    b.Property<Guid>("AggregateId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
@@ -38,25 +38,20 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newsequentialid()");
-
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("AggregateId");
+                    b.HasKey("Id");
 
                     b.ToTable("Cart", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.CategoryAggregate.Category", b =>
                 {
-                    b.Property<Guid>("AggregateId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
@@ -73,34 +68,24 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newsequentialid()");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AggregateId");
+                    b.HasKey("Id");
 
                     b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.OrderAggregate.Order", b =>
                 {
-                    b.Property<Guid>("AggregateId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -118,14 +103,14 @@ namespace ECommerceShop.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("AggregateId");
+                    b.HasKey("Id");
 
                     b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.ProductAggregate.Product", b =>
                 {
-                    b.Property<Guid>("AggregateId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
@@ -138,11 +123,6 @@ namespace ECommerceShop.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newsequentialid()");
 
                     b.Property<DateTime?>("ModifyAt")
                         .HasColumnType("datetime2");
@@ -158,14 +138,14 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AggregateId");
+                    b.HasKey("Id");
 
                     b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("ECommerceShop.Domain.UserAggregate.User", b =>
                 {
-                    b.Property<Guid>("AggregateId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasDefaultValueSql("newsequentialid()");
@@ -182,11 +162,6 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("newsequentialid()");
-
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
 
@@ -202,7 +177,7 @@ namespace ECommerceShop.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("AggregateId");
+                    b.HasKey("Id");
 
                     b.ToTable("User", (string)null);
                 });
@@ -279,24 +254,6 @@ namespace ECommerceShop.Infrastructure.Migrations
 
             modelBuilder.Entity("ECommerceShop.Domain.UserAggregate.User", b =>
                 {
-                    b.OwnsOne("ECommerceShop.Domain.UserAggregate.ValueObjects.Address", "ShippingAddress", b1 =>
-                        {
-                            b1.Property<Guid>("UserAggregateId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("StreetAddress")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("UserAggregateId");
-
-                            b1.ToTable("User");
-
-                            b1.WithOwner()
-                                .HasForeignKey("UserAggregateId");
-                        });
-
                     b.OwnsMany("ECommerceShop.Domain.UserAggregate.Entities.UserToken", "UserTokens", b1 =>
                         {
                             b1.Property<Guid>("UserId")
@@ -327,6 +284,24 @@ namespace ECommerceShop.Infrastructure.Migrations
                             b1.HasKey("UserId", "Id");
 
                             b1.ToTable("UserTokens", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("UserId");
+                        });
+
+                    b.OwnsOne("ECommerceShop.Domain.UserAggregate.ValueObjects.Address", "ShippingAddress", b1 =>
+                        {
+                            b1.Property<Guid>("UserId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("StreetAddress")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("UserId");
+
+                            b1.ToTable("User");
 
                             b1.WithOwner()
                                 .HasForeignKey("UserId");

@@ -27,7 +27,9 @@ namespace ECommerceShop.Infrastructure.Persistence
             modelBuilder
                 .ApplyConfigurationsFromAssembly(typeof(ECommerceShopDbContext).Assembly);
 
+
             base.OnModelCreating(modelBuilder);
+
         }
 
 

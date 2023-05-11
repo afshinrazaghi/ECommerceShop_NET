@@ -25,11 +25,11 @@ namespace ECommerceShop.Infrastructure.Persistence.Configurations
         {
             builder.ToTable("Order");
 
-            builder.HasKey(o => o.AggregateId);
+            builder.HasKey(o => o.Id);
 
-            builder.Property(o => o.AggregateId)
-               .ValueGeneratedOnAdd()
-               .HasDefaultValueSql("newsequentialid()"); ;
+            //builder.Property(o => o.AggregateId)
+            //   .ValueGeneratedOnAdd()
+            //   .HasDefaultValueSql("newsequentialid()"); ;
 
             builder.Property(o => o.TotalAmount).HasColumnType("decimal(18,2)");
 

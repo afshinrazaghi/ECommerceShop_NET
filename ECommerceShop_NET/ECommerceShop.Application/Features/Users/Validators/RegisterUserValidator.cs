@@ -15,19 +15,24 @@ namespace ECommerceShop.Application.Features.Users.Validators
         public RegisterUserValidator(IUserRepository userRepository)
         {
             RuleFor(x => x.Email)
-               .NotNull().WithMessage("Email is mandatory")
-               .NotEmpty().WithMessage("Email is mandatory");
+               .Cascade(CascadeMode.Stop)
+               .NotEmpty().WithMessage("Email is mandatory")
+               .EmailAddress().WithMessage("Email is invalid")
+               .MustAsync(async (email, token) =>
+               {
+                   return !await userRepository.EmailExist(email);
+               })
+               .WithMessage("Email already exists!");
 
             RuleFor(x => x.Password)
-                .NotNull().WithMessage("Password is mandatory")
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Password is mandatory")
-                .MinimumLength(6).WithMessage("Password must be more than 6 character");
+                .MinimumLength(6).WithMessage("Password must be more than 6 character"); ;
 
-            RuleFor(x => x.Email)
-                .MustAsync(async (email, token) =>
-                {
-                    return !await userRepository.EmailExist(email);
-                }).WithMessage("Email already exists!");
+           
+                
+
+
         }
     }
 }

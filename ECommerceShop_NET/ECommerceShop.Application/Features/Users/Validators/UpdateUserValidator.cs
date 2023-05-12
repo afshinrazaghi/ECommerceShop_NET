@@ -12,12 +12,13 @@ namespace ECommerceShop.Application.Features.Users.Validators
     {
         public UpdateUserValidator()
         {
+            RuleFor(u => u.Id)
+                .NotEmpty().WithMessage("User Id not found");
+
             RuleFor(u => u.FirstName)
-                .NotNull().WithMessage("First Name is mandatory")
                 .NotEmpty().WithMessage("First Name is mandatory");
 
             RuleFor(u => u.LastName)
-                .NotNull().WithMessage("Last Name is mandatory")
                 .NotEmpty().WithMessage("Last Name is mandatory");
 
             RuleFor(u => u.Password)

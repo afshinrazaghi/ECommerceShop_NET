@@ -23,9 +23,17 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
         public async Task<BaseCommandResponse> Handle(LogoutUserCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommandResponse();
-            await _userRepository.ClearUserTokens(UserId.Create(request.UserId));
-            response.Success = true;
-            response.Message = "Logout successfully!";
+            var res = await _userRepository.ClearUserTokens(UserId.Create(request.UserId));
+            if (res)
+            {
+                response.Success = true;
+                response.Message = "Logout successfully!";
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "User not found!";
+            }
             return response;
         }
     }

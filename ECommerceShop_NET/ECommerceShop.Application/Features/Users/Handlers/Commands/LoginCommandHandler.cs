@@ -2,6 +2,7 @@
 using ECommerceShop.Application.Common.Interfaces.Persistence;
 using ECommerceShop.Application.Common.Interfaces.Services;
 using ECommerceShop.Application.Features.Users.Requests.Commands;
+using ECommerceShop.Application.Features.Users.Validators;
 using ECommerceShop.Application.Responses;
 using ECommerceShop.Contracts.Models.User.Responses;
 using ECommerceShop.Domain.UserAggregate.Entities;
@@ -32,27 +33,37 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
         public async Task<BaseCommandResponse<LoginUserResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommandResponse<LoginUserResponse>();
-            var user = await _userRepository.GetUser(request.Email);
-            if (user != null)
+            var validator = new LoginCommandValidator();
+            var validationResult = await validator.ValidateAsync(request);
+            if (validationResult.IsValid)
             {
-                if (_passwordHasher.VerifyPassword(request.Password, user.Password))
+                var user = await _userRepository.GetUser(request.Email);
+                if (user != null)
                 {
-                    var tokenInfo = _jwtTokenGenerator.GenerateToken(user);
-                    var refreshToken = Guid.NewGuid().ToString();
-                    var refreshTokenExpireDate = tokenInfo.Expiration.AddDays(1);
+                    if (_passwordHasher.VerifyPassword(request.Password, user.Password))
+                    {
+                        var tokenInfo = _jwtTokenGenerator.GenerateToken(user);
+                        var refreshToken = Guid.NewGuid().ToString();
+                        var refreshTokenExpireDate = tokenInfo.Expiration.AddDays(1);
 
-                    var userToken = UserToken.Create(tokenInfo.AccessToken, tokenInfo.Expiration, refreshToken, refreshTokenExpireDate);
-                    user.ClearUserTokens();
-                    user.AddUserToken(userToken);
+                        var userToken = UserToken.Create(tokenInfo.AccessToken, tokenInfo.Expiration, refreshToken, refreshTokenExpireDate);
+                        user.ClearUserTokens();
+                        user.AddUserToken(userToken);
 
-                    await _userRepository.SaveChangesAsync();
+                        await _userRepository.SaveChangesAsync();
 
-                    var userInfo = _mapper.Map<LoginUserResponse>(user);
-                    userInfo.AccessToken = tokenInfo.AccessToken;
-                    userInfo.RefreshToken = refreshToken;
-                    response.Item = userInfo;
-                    response.Success = true;
-                    response.Message = "User logged in successfully!";
+                        var userInfo = _mapper.Map<LoginUserResponse>(user);
+                        userInfo.AccessToken = tokenInfo.AccessToken;
+                        userInfo.RefreshToken = refreshToken;
+                        response.Item = userInfo;
+                        response.Success = true;
+                        response.Message = "User logged in successfully!";
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Email or Password is incorrect";
+                    }
                 }
                 else
                 {
@@ -63,8 +74,11 @@ namespace ECommerceShop.Application.Features.Users.Handlers.Commands
             else
             {
                 response.Success = false;
-                response.Message = "Email or Password is incorrect";
+                response.Message = string.Join(", ", validationResult.Errors.Select(x => x.ErrorMessage));
             }
+
+
+
 
             return response;
         }

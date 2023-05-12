@@ -26,14 +26,16 @@ namespace ECommerceShop.Infrastructure.Persistence
             return user;
         }
 
-        public async Task ClearUserTokens(UserId userId)
+        public async Task<bool> ClearUserTokens(UserId userId)
         {
             var user = await _context.Users.Include(x => x.UserTokens).SingleOrDefaultAsync(u => u.Id == userId);
             if (user != null)
             {
                 user.ClearUserTokens();
                 await _context.SaveChangesAsync();
+                return true;
             }
+            return false;
 
         }
 

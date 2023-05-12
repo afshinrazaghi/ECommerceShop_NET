@@ -15,6 +15,8 @@ using ECommerceShop.Infrastructure.Persistence;
 using Respawn;
 using ECommerceShop.Domain.Common.Models;
 using ECommerceShop.Domain.CategoryAggregate.ValueObjects;
+using Microsoft.EntityFrameworkCore;
+using ECommerceShop.Application.Common.Interfaces.Services;
 
 namespace ECommerceApplication.Tests
 {
@@ -48,11 +50,20 @@ namespace ECommerceApplication.Tests
                     "__EFMigrationsHistory"
                 }
             });
+
+
         }
 
         public static async Task ResetState()
         {
             await _spawner.ResetAsync(_config.GetConnectionString("ECommerceConnectionString")!);
+        }
+
+        public static bool VerifyPassword(string password, string hashPassword)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var passwordHasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
+            return passwordHasher.VerifyPassword(password, hashPassword);
         }
 
 
@@ -66,12 +77,17 @@ namespace ECommerceApplication.Tests
             return entity;
         }
 
-        public static async Task<TEntity?> GetAsync<TEntity>(StronglyTypedId<Guid> id)
+        public static async Task<TEntity?> GetAsync<TEntity>(StronglyTypedId<Guid> id, string includes = "")
             where TEntity : class
         {
             using var scope = _scopeFactory.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<ECommerceShopDbContext>();
-            var res = await context.Set<TEntity>().FindAsync(id);
+            var dbSet = context.Set<TEntity>();
+            if (!string.IsNullOrEmpty(includes))
+            {
+                dbSet.Include(includes);
+            }
+            var res = await dbSet.FindAsync(id);
             return res;
         }
 

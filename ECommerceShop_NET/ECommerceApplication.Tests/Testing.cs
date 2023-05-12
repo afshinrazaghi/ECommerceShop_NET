@@ -13,6 +13,8 @@ using Moq;
 using Microsoft.AspNetCore.Hosting;
 using ECommerceShop.Infrastructure.Persistence;
 using Respawn;
+using ECommerceShop.Domain.Common.Models;
+using ECommerceShop.Domain.CategoryAggregate.ValueObjects;
 
 namespace ECommerceApplication.Tests
 {
@@ -54,13 +56,23 @@ namespace ECommerceApplication.Tests
         }
 
 
-        public static async Task AddAsync<TEntity>(TEntity entity)
+        public static async Task<TEntity> AddAsync<TEntity>(TEntity entity)
             where TEntity : class
         {
             using var scope = _scopeFactory.CreateScope();
             var context = scope.ServiceProvider.GetRequiredService<ECommerceShopDbContext>();
             await context.AddAsync(entity);
             await context.SaveChangesAsync();
+            return entity;
+        }
+
+        public static async Task<TEntity?> GetAsync<TEntity>(StronglyTypedId<Guid> id)
+            where TEntity : class
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<ECommerceShopDbContext>();
+            var res = await context.Set<TEntity>().FindAsync(id);
+            return res;
         }
 
         public static async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)

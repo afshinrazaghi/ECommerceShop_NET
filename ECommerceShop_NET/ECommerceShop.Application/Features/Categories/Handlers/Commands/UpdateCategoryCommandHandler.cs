@@ -33,14 +33,21 @@ namespace ECommerceShop.Application.Features.Categories.Handlers.Commands
             if (validationResult.IsValid)
             {
                 var res = await _categoryRepository.UpdateCategory(CategoryId.Create(request.Id), request.Name, request.Description);
-                response.Success = true;
-                response.Message = "Category updated successfully";
-                response.Item = _mapper.Map<UpdateCategoryResponse>(res);
+                if (res != null)
+                {
+                    response.Success = true;
+                    response.Message = "Category updated successfully";
+                    response.Item = _mapper.Map<UpdateCategoryResponse>(res);
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Category not found!";
+                }
             }
             else
             {
                 response.Success = false;
-                response.Message = string.Join(", ", validationResult.Errors.Select(x => x.ErrorMessage));
                 response.Message = string.Join(", ", validationResult.Errors.Select(x => x.ErrorMessage));
             }
 

@@ -23,9 +23,17 @@ namespace ECommerceShop.Application.Features.Categories.Handlers.Commands
         public async Task<BaseCommandResponse> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommandResponse();
-            await _categoryRepository.DeleteCategory(CategoryId.Create(request.Id));
-            response.Success = true;
-            response.Message = "Category removed successfully!";
+            var res = await _categoryRepository.DeleteCategory(CategoryId.Create(request.Id));
+            if (res)
+            {
+                response.Success = true;
+                response.Message = "Category removed successfully!";
+            }
+            else
+            {
+                response.Success = false;
+                response.Message = "Category not found!";
+            }
             return response;
         }
     }

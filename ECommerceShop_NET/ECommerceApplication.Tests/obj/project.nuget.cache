@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fdOuGMNT21VSX8sQXNLnBZyOdW9lDUAgeSme9dlxFFOVe5c+LCgcXHbl+gK7CRXbO0I6VYFFt1UIwT/Mnzn0PQ==",
+  "dgSpecHash": "JPwUbzakpTqIOqp0aywa3OzbeEwRqklbvBpCaYbth79hbDvyKPtjOLpc9oXBGopQqX6FnctIJm+g3vj97NAWsg==",
   "success": true,
   "projectFilePath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceApplication.Tests\\ECommerceApplication.Tests.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Afshin\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\bcrypt.net\\0.1.0\\bcrypt.net.0.1.0.nupkg.sha512",
+    "C:\\Users\\Afshin\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",

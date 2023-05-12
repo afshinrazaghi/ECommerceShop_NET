@@ -31,14 +31,16 @@ namespace ECommerceShop.Infrastructure.Persistence
             return category;
         }
 
-        public async Task DeleteCategory(CategoryId id)
+        public async Task<bool> DeleteCategory(CategoryId id)
         {
             var dbCategory = await _context.Categories.FirstOrDefaultAsync(c=>c.Id == id);
             if (dbCategory != null)
             {
                 dbCategory.DeleteCategory(DateTime.UtcNow);
                 await _context.SaveChangesAsync();
+                return true;
             }
+            return false;
         }
 
         public IQueryable<Category> GetCategories(string? searchParam)

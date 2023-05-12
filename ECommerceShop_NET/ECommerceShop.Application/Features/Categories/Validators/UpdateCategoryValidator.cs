@@ -17,15 +17,16 @@ namespace ECommerceShop.Application.Features.Categories.Validators
         {
             RuleFor(c => c.Name)
                    .NotEmpty()
-                   .WithMessage("Name is mandatory")
-                   .NotNull()
                    .WithMessage("Name is mandatory");
 
             RuleFor(c=>c)
                 .MustAsync(async (updateCategoryCommand, token) =>
                 {
-                    return !await categoryRepository.CategoryNameExist(CategoryId.Create(updateCategoryCommand.Id), updateCategoryCommand.Name);
-                }).WithMessage("Category with this name already exist!");
+                    var res = !await categoryRepository.CategoryNameExist(CategoryId.Create(updateCategoryCommand.Id), updateCategoryCommand.Name);
+                    return res;
+                })
+                .When(c=>!string.IsNullOrEmpty(c.Name))
+                .WithMessage("Category with this name already exist!");
         }
     }
 }

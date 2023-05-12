@@ -19,6 +19,6 @@ namespace ECommerceShop.Application.Common.Interfaces.Persistence
 
         public Task<Category?> UpdateCategory(CategoryId id, string name, string? description);
 
-        public Task DeleteCategory(CategoryId id);
+        public Task<bool> DeleteCategory(CategoryId id);
     }
 }

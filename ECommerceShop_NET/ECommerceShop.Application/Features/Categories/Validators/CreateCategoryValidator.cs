@@ -16,8 +16,6 @@ namespace ECommerceShop.Application.Features.Categories.Validators
             RuleFor(c => c.Name)
                 .NotEmpty()
                 .WithMessage("Name is mandatory")
-                .NotNull()
-                .WithMessage("Name is mandatory")
                 .MustAsync(async (name, token) =>
                 {
                     return !await categoryRepository.CategoryNameExist(null, name);

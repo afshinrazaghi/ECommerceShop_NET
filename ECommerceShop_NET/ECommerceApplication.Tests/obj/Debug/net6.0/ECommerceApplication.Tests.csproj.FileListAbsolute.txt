@@ -175,3 +175,4 @@ D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceApplicati
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceApplication.Tests\bin\Debug\net6.0\ECommerceShop.Contracts.pdb
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceApplication.Tests\bin\Debug\net6.0\ECommerceShop.Domain.pdb
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceApplication.Tests\bin\Debug\net6.0\ECommerceShop.Infrastructure.pdb
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceApplication.Tests\bin\Debug\net6.0\Bogus.dll

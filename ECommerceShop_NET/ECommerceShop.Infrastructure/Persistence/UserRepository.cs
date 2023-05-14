@@ -41,13 +41,13 @@ namespace ECommerceShop.Infrastructure.Persistence
 
         public async Task<bool> EmailExist(string email)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
             return user != null;
         }
 
         public async Task<User?> GetUser(string email)
         {
-            return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+            return await _context.Users.SingleOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
         }
 
         public async Task<User?> GetUser(UserId userId)

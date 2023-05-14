@@ -6,6 +6,7 @@ namespace ECommerceShop.API.Controllers
     public class ErrorsController : Controller
     {
         [Route("error")]
+        [HttpGet]
         public ActionResult Error()
         {
             var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;

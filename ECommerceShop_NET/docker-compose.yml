@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+    ecommerceshop_api:
+        build: .
+        ports:
+          - "8181:80"
+    ecommerceshop_angular:
+        build:
+            context : .
+            dockerfile: ./AngularDockerfile
+        ports:
+          - "8080:80"
+    ms-sql-server:
+        image: "mcr.microsoft.com/mssql/server:2022-latest"
+        ports:
+          - "1433:1433"
+        environment:
+            MSSQL_SA_PASSWORD: "Admin123456"
+            ACCEPT_EULA: "Y"
+            MSSQL_PID: Express

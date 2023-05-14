@@ -1,5 +1,6 @@
 using ECommerceShop.Application;
 using ECommerceShop.Infrastructure;
+using ECommerceShop.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,22 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.ConfigureApplicationServices();
     builder.Services.ConfigureInfrastructureServices(builder.Configuration);
     builder.Services.AddCors();
+    builder.Services.AddSwaggerGen();
 }
 
 var app = builder.Build();
+
+//if (app.Environment.IsDevelopment())
+//{
+//    using (var scope = app.Services.CreateScope())
+//    {
+//        var salesContext = scope.ServiceProvider.GetRequiredService<ECommerceShopDbContext>();
+//        salesContext.Database.EnsureCreated();
+//    }
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5OJU/O6QHQWnmMnTUz8beCb6pW5jPOlE5kMr+f7WtVLzc25ltNW2+hqVAGo4VdHXIhrdduxPJlLw8+az5y41GQ==",
+  "dgSpecHash": "L8OKPyzhiyGsjhNQ2GzDfz6o1AVP8mqRvadlq9nYDP9Yh4JSDwMqKp0MzwqCJJNQe7P4/3ANvRsrokpUQyq6hw==",
   "success": true,
   "projectFilePath": "D:\\WorkArea\\ECommerceShop\\ECommerceShop_NET\\ECommerceShop_NET\\ECommerceShop.API\\ECommerceShop.API.csproj",
   "expectedPackageFiles": [
@@ -48,11 +48,15 @@
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.30.0\\microsoft.identitymodel.tokens.6.30.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\Afshin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Afshin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Afshin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\Afshin\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",

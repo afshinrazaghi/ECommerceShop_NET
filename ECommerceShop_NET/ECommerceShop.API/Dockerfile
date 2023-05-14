@@ -1,17 +1,18 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
-
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-jammy AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy AS build
 WORKDIR /src
 COPY ["ECommerceShop.API/ECommerceShop.API.csproj", "ECommerceShop.API/"]
-RUN dotnet restore "ECommerceShop_NET/ECommerceShop.API.csproj"
+COPY ["Contracts/ECommerceShop.Contracts.csproj", "Contracts/"]
+COPY ["ECommerceShop.Application/ECommerceShop.Application.csproj", "ECommerceShop.Application/"]
+COPY ["ECommerceShop.Domain/ECommerceShop.Domain.csproj", "ECommerceShop.Domain/"]
+COPY ["ECommerceShop.Infrastructure/ECommerceShop.Infrastructure.csproj", "ECommerceShop.Infrastructure/"]
+RUN dotnet restore "ECommerceShop.API/ECommerceShop.API.csproj"
 COPY . .
 WORKDIR "/src/ECommerceShop.API"
 RUN dotnet build "ECommerceShop.API.csproj" -c Release -o /app/build

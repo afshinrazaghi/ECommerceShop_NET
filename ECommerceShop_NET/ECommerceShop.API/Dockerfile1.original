@@ -1,0 +1,24 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["./ECommerceShop.API.csproj", "ECommerceShop.API"]
+COPY ["../ECommerceShop.Application/ECommerceShop.Application.csproj", "ECommerceShop.Application/"]
+COPY ["../ECommerceShop.Domain/ECommerceShop.Domain.csproj", "ECommerceShop.Application/"]
+RUN dotnet restore "ECommerceShop.API/ECommerceShop.API.csproj"
+COPY . .
+WORKDIR "/src/ECommerceShop.API"
+RUN dotnet build "ECommerceShop.API.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "ECommerceShop.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "ECommerceShop.API.dll"]

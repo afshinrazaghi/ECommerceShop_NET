@@ -197,3 +197,8 @@ D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\WorkArea\ECommerceShop\ECommerceShop_NET\ECommerceShop_NET\ECommerceShop.API\obj\Debug\net6.0\ECommerceShop.API.MvcApplicationPartsAssemblyInfo.cs
